@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hacking Medalia xd</title>
+</head>
+<body>
+	<form>
+		<h3>Introduce tu inicial</h3>
+		<input type="text" name="initial" placeholder="Inicial" id="initial"/>
+		<h3>Los primeros 3 numeros (666666, 666)</h3>
+		<input type="text" name="f_tree" placeholder="666" id="f_tree"/>
+		<h3>Todos los números a los que vas a enviar un formulario separados por una coma: 123, 124, 125, 126</h3>
+		<input type="text" name="nums" placeholder="123,124" id="nums"/>
+		<h3>¿Reparto o mostrador?</h3>
+		<input type="radio" id="reparto" name="service" value="1">Reparto<br>
+		<input type="radio" id="mostrador" name="service" value="2">Mostrador<br>  
+		<input type="button" name="send" onclick={handleForm()} placeholder="Iniciar" value="Send">		
+	</form>
+	<script type="text/javascript">
+		console.log('hi');
+
+		const handleForm = () => {
+			let initial = document.getElementById('initial').value
+			let f_tree = document.getElementById('f_tree').value
+			let nums = document.getElementById('nums').value
+			let service = document.getElementsByName('service')
+			
+			console.log(service[0])
+			if (service[0].checked) {
+				service = '1'
+			} else {
+				service = '2'
+			}
+			console.log(service)
+
+			alert(`Tu inicial es: ${initial}`)
+			alert(`Los numeros se veran así: ${f_tree}${nums}`)
+
+			let form = {
+				initial,
+				f_tree,
+				nums,
+				service				
+			}
+
+			console.log(form)
+
+			local = 'http://127.0.0.1:8000/'
+			prod = 'https://hackingalsea.herokuapp.com/'
+
+			fetch(prod, {
+				method: 'POST',
+				headers: {					
+			      	'Content-Type': 'application/json'			     
+			    },
+			    body: JSON.stringify(form)
+			})
+				.then(response => response.json())
+				.then(data => alert('Ya ha terminado el programa, ve a preguntarle a alguien como se ve xd <3'));
+		};
+	</script>
+</body>
+</html>

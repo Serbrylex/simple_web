@@ -34,9 +34,6 @@
 			}
 			console.log(service)
 
-			alert(`Tu inicial es: ${initial}`)
-			alert(`Los numeros se veran así: ${f_tree}${nums}`)
-
 			let form = {
 				initial,
 				f_tree,
@@ -49,7 +46,7 @@
 			local = 'http://127.0.0.1:8000/'
 			prod = 'https://hackingalsea.herokuapp.com/'
 
-			fetch(prod, {
+			fetch(local, {
 				method: 'POST',
 				headers: {					
 			      	'Content-Type': 'application/json'			     
@@ -61,4 +58,5 @@
 		};
 	</script>
 </body>
+<!--https://serbrylex.github.io/simple_web/-->
 </html>
